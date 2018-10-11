@@ -10,6 +10,17 @@ Rails.application.routes.draw do
     post   :remove_item
   end
 
+  # resource :users, only: [:new, :create]
+  # resource :sessions
+
+  # Taken from tutorial: https://gist.github.com/thebucknerlife/10090014
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
   resources :orders, only: [:create, :show]
 
   namespace :admin do
