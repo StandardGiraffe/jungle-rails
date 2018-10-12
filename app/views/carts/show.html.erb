@@ -4,6 +4,13 @@
     <h1>My Cart</h1>
   </header>
 
+    <% if enhanced_cart.count < 1 %>
+      <div class="order-summary jumbotron">
+        <h4>Hey, <%= current_user.first_name %>!  Your cart is empty!</h4>
+        <h5>Why don't you <%= link_to 'go be a better consumer', root_path %> for the economy of your nation state?</h5>
+      </div>
+    <% else %>
+
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -45,6 +52,7 @@
           data-email=<%=current_user.email %>
           data-currency="cad">
         </script>
+    <% end %>
       <% end %>
     </div>
   </div>
