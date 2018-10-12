@@ -133,4 +133,30 @@ cat3.products.create!({
 })
 
 
+puts "Generating evil reviews ..."
+
+
+User.destroy_all
+
+(0..5).each do |i|
+  User.create!({
+    email: "test@test.com",
+    password_digest: "I'm a password digest!",
+    first_name: Faker::Lovecraft.location,
+    last_name: Faker::Lovecraft.deity
+  })
+end
+
+Review.destroy_all
+
+(0..50).each do |i|
+  Review.create!({
+    product: Product.all.sample,
+    user: User.all.sample,
+    description: Faker::Lovecraft.fhtagn(3),
+    rating: rand(1..5)
+  })
+end
+
+
 puts "DONE!"
