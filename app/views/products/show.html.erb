@@ -52,7 +52,7 @@
           </tr>
         </thead>
     <% @product.reviews.each do |review|%>
-      <%= render 'reviews', user: User.find_by(id: review.user_id), description: review[:description], rating: review[:rating] %>
+      <%= render 'reviews', user: User.find_by(id: review.user_id), description: review[:description], rating: review[:rating], id: review[:id] %>
       <% end %>
     </table>
     </div>

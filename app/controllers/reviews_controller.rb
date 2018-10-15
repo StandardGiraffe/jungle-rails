@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-  before_action :require_login
+  # before_action :require_login
 
   def create
     @review = Review.new(
@@ -16,6 +16,13 @@ class ReviewsController < ApplicationController
     end
 
   end
+
+  def destroy
+    @review = Review.find params[:id]
+    @review.destroy
+    redirect_to product_path(params[:product_id])
+  end
+
 
   private
 

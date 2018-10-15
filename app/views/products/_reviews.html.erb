@@ -4,8 +4,12 @@
   </td>
   <td>
     <p><%= description %></p>
+  <% if user.id == current_user.id %>
+      <%= button_to 'Delete?', product_review_path(product_id: @product, id: id), method: :delete, class: 'btn btn-danger' %>
+  <% end %>
   </td>
   <td>
     <p><%= rating %> / 5</p>
   </td>
+
 </tr>
