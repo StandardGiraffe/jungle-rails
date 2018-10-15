@@ -51,7 +51,7 @@
             <th>Rating</th>
           </tr>
         </thead>
-    <% @product.reviews.each do |review|%>
+    <% @product.reviews.reverse_each do |review|%>
       <%= render 'reviews', user: User.find_by(id: review.user_id), description: review[:description], rating: review[:rating], id: review[:id] %>
       <% end %>
     </table>
