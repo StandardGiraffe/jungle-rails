@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-  # before_action :require_login
+  before_action :require_login
 
   def create
     @review = Review.new(
@@ -31,9 +31,9 @@ class ReviewsController < ApplicationController
   # end
 
   def require_login
-    unless logged_in?
-      flash[:error] = "You must be logged in to access this section"
-      redirect_to product_path(params[:product_id])
+    unless session
+      # flash[:error] = "You must be logged in to access this section"
+      redirect_to root
     end
   end
 
